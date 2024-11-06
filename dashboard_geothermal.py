@@ -47,7 +47,7 @@ st.subheader("Input Luas Prospek")
 input_method_luas = st.radio("Pilih metode input untuk Luas Prospek:", ("Slider", "Ketik Nilai"))
 
 if input_method_luas == "Slider":
-    luas_prospek = st.slider("Luas Prospek (km²)", min_value=0.0, max_value=10.0, value=5.17, step=0.01)
+    luas_prospek = st.slider("Luas Prospek (km²)", min_value=0.0, max_value=300.0, value=5.17, step=0.01)
 else:
     luas_prospek = st.number_input("Luas Prospek (km²)", min_value=0.0, value=5.17, step=0.01)
 
