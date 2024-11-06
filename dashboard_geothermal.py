@@ -55,9 +55,9 @@ st.subheader("Input Suhu Reservoir")
 input_method_suhu = st.radio("Pilih metode input untuk Suhu Reservoir:", ("Slider", "Ketik Nilai"))
 
 if input_method_suhu == "Slider":
-    suhu_reservoir = st.slider("Suhu Reservoir (°C)", min_value=0, max_value=300, value=273, step=1)
+    suhu_reservoir = st.slider("Suhu Reservoir (°C)", min_value=0, max_value=350, value=273, step=1)
 else:
-    suhu_reservoir = st.number_input("Suhu Reservoir (°C)", min_value=0, max_value=300, value=273, step=1)
+    suhu_reservoir = st.number_input("Suhu Reservoir (°C)", min_value=0, max_value=350, value=273, step=1)
 
 # Hasil perhitungan otomatis tanpa tombol
 if nama_lapangan:
