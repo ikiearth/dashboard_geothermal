@@ -42,24 +42,37 @@ st.write("Masukkan data di bawah ini untuk menghitung daya spekulatif pada lapan
 # Input nama lapangan dari user
 nama_lapangan = st.text_input("Nama Lapangan Panas Bumi", "")
 
-# Input data dari user
-luas_prospek = st.number_input("Luas Prospek (km²)", min_value=0.0, value=5.17, step=0.01)
-suhu_reservoir = st.number_input("Suhu Reservoir (°C)", min_value=0.0, value=273.0, step=1.0)
+# Pilihan metode input
+st.subheader("Input Luas Prospek")
+input_method_luas = st.radio("Pilih metode input untuk Luas Prospek:", ("Slider", "Ketik Nilai"))
 
-# Tombol untuk menghitung daya spekulatif
-if st.button("Hitung Daya Spekulatif"):
-    if nama_lapangan:
-        hasil = hitung_daya_spekulatif(luas_prospek, suhu_reservoir)
-        
-        if hasil:
-            st.success(f"Hasil Perhitungan Daya Spekulatif untuk Lapangan: {nama_lapangan}")
-            st.write(f"**Kategori Temperatur:** {hasil['kategori']}")
-            st.write(f"**Daya Spekulatif:** {hasil['daya_spekulatif']} {hasil['satuan']}")
-        else:
-            st.error("Tidak ada kategori suhu yang sesuai untuk perhitungan daya spekulatif.")
+if input_method_luas == "Slider":
+    luas_prospek = st.slider("Luas Prospek (km²)", min_value=0.0, max_value=10.0, value=5.17, step=0.01)
+else:
+    luas_prospek = st.number_input("Luas Prospek (km²)", min_value=0.0, value=5.17, step=0.01)
+
+st.subheader("Input Suhu Reservoir")
+input_method_suhu = st.radio("Pilih metode input untuk Suhu Reservoir:", ("Slider", "Ketik Nilai"))
+
+if input_method_suhu == "Slider":
+    suhu_reservoir = st.slider("Suhu Reservoir (°C)", min_value=0, max_value=300, value=273, step=1)
+else:
+    suhu_reservoir = st.number_input("Suhu Reservoir (°C)", min_value=0, max_value=300, value=273, step=1)
+
+# Hasil perhitungan otomatis tanpa tombol
+if nama_lapangan:
+    hasil = hitung_daya_spekulatif(luas_prospek, suhu_reservoir)
+    
+    if hasil:
+        st.success(f"Hasil Perhitungan Daya Spekulatif untuk Lapangan: {nama_lapangan}")
+        st.write(f"**Kategori Temperatur:** {hasil['kategori']}")
+        st.write(f"**Daya Spekulatif:** {hasil['daya_spekulatif']} {hasil['satuan']}")
     else:
-        st.warning("Silakan masukkan nama lapangan.")
+        st.error("Tidak ada kategori suhu yang sesuai untuk perhitungan daya spekulatif.")
+else:
+    st.warning("Silakan masukkan nama lapangan.")
 
+# Tabel Pembagian Kelas Suhu
 st.write("Pembagian kelas temperatur panas bumi berdasarkan batas temperatur (SNI, 1999):")
 st.dataframe({
     "Kategori": ["Temperatur rendah", "Temperatur sedang", "Temperatur tinggi"],
