@@ -27,7 +27,7 @@ def hitung_daya_spekulatif(luas_prospek, suhu_reservoir):
     for kategori, data in data_reservoir.items():
         batas_min, batas_max = data["batas_temp"]
         if batas_min <= suhu_reservoir < batas_max:
-            daya_spekulatif = luas_prospek * data["daya_per_satuan_luas"] * (data["konversi_energi"] / 100)
+            daya_spekulatif = luas_prospek * data["daya_per_satuan_luas"]  #(data["konversi_energi"] / 100)
             return {
                 "kategori": kategori,
                 "daya_spekulatif": daya_spekulatif,
