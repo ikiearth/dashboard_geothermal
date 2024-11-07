@@ -37,7 +37,7 @@ def hitung_daya_spekulatif(luas_prospek, suhu_reservoir):
 
 # Streamlit App
 st.title("Dashboard Daya Spekulatif Panas Bumi")
-st.write("Mukhammad Sholikhuddin - Kelompok GeoVentur4")
+st.write("Created by: Mukhammad Sholikhuddin - Kelompok GeoVentur4")
 st.write("Masukkan data di bawah ini untuk menghitung daya spekulatif pada lapangan panas bumi.")
 
 # Input nama lapangan dari user
