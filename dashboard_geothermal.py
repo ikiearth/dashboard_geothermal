@@ -82,7 +82,7 @@ if nama_lapangan:
         st.success(f"Hasil Perhitungan Daya Spekulatif untuk Lapangan: {nama_lapangan}")
         st.write(f"**Kategori Temperatur:** {hasil['kategori']}")
         st.write(f"**Daya Spekulatif:** {hasil['daya_spekulatif']} {hasil['satuan']}")
-        st.write(f"**Konversi Energi:** {hasil_energi['daya_spekulatif']} {hasil['satuan']}")
+        st.write(f"**Daya yang Dapat Dikonversi Energi:** {hasil_energi['daya_spekulatif']} {hasil['satuan']}")
     else:
         st.error("Tidak ada kategori suhu yang sesuai untuk perhitungan daya spekulatif.")
 else:
